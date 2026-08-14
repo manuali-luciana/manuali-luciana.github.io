@@ -5,9 +5,7 @@
   How to edit this file (no web experience needed):
 
   • TO CHANGE TEXT: use Ctrl+F (Cmd+F on Mac) to find the words you
-    want to change, then type over them. Each bit of text appears
-    twice — once after <span lang-en> (English) and once after
-    <span lang-es> (Spanish). Change both.
+    want to change, then type over them.
 
   • TO ADD YOUR PHOTO: search for  class="portrait"  and follow the
     note there.
@@ -15,8 +13,8 @@
   • TO ADD A RESEARCH FIGURE: search for  class="fig"  — replace the
     bracketed [ ... ] text with an <img> tag. Note is next to it.
 
-  • TO ADD THE CV / SCHOLAR / ETC: search for  href="#"  — those are
-    the links still waiting for a real URL.
+  • TO ADD THE CV: search for  href="#"  — that link is waiting for
+    a real URL (upload cv.pdf and set href="cv.pdf").
 
   • Anything inside [ square brackets ] is a placeholder waiting for
     a real photo, figure, or link.
@@ -37,6 +35,7 @@
   :root{
     --blue:#0072B2;
     --blue-deep:#00527f;
+    --link:#3a7ca5;
     --orange:#D55E00;
     --ink:#1c1c1e;
     --gray:#787878;
@@ -72,14 +71,11 @@
   .nav-links{display:flex;gap:26px;align-items:center}
   .nav-links a{color:var(--ink);text-decoration:none;font-size:14.5px;font-weight:500;transition:color .15s}
   .nav-links a:hover{color:var(--blue)}
-  .lang{border:1px solid var(--line);border-radius:100px;padding:4px 12px;font-size:13px;font-weight:600;color:var(--gray);background:none;cursor:pointer;font-family:inherit}
-  .lang:hover{border-color:var(--blue);color:var(--blue)}
   .menu-btn{display:none;background:none;border:none;font-size:24px;color:var(--ink);cursor:pointer}
   @media(max-width:720px){
     .nav-links{position:fixed;inset:60px 0 auto 0;background:#fff;flex-direction:column;gap:0;border-bottom:1px solid var(--line);transform:translateY(-120%);transition:transform .25s;padding:8px 0}
     .nav-links.open{transform:translateY(0)}
     .nav-links a{padding:12px 24px;width:100%}
-    .nav-links .lang{margin:8px 24px}
     .menu-btn{display:block}
   }
 
@@ -92,15 +88,11 @@
 
   /* ---------- HERO ---------- */
   .hero{padding-top:64px;padding-bottom:64px;display:grid;grid-template-columns:1fr auto;gap:48px;align-items:center;border-bottom:1px solid var(--line)}
-  .hero h1{font-size:46px;margin-bottom:18px;color:var(--ink)}
-  .hero h1 .acc{color:var(--blue)}
-  .hero p.role{font-size:19px;color:var(--blue);font-weight:600;margin-bottom:18px;font-family:'Inter',sans-serif}
   .hero .hero-welcome{font-size:26px;color:var(--blue);margin-bottom:20px;font-weight:600}
-  .hero .hero-bio p{margin-bottom:14px;font-size:16px;color:#333}
-  .hero .hero-bio a{color:var(--blue);text-decoration:none;font-weight:500}
+  .hero .hero-bio p{margin-bottom:14px;font-size:16px;color:#333;text-align:justify}
+  .hero .hero-bio a{color:var(--link);text-decoration:none;font-weight:500}
   .hero .hero-bio a:hover{text-decoration:underline}
-  .hero .hero-bio .contact{margin-top:18px}
-  .hero p.blurb{color:#333;max-width:560px;margin-bottom:26px}
+  .hero .hero-bio .contact{margin-top:18px;text-align:left}
   .hero-links{display:flex;flex-wrap:wrap;gap:12px}
   .btn{display:inline-flex;align-items:center;gap:7px;text-decoration:none;font-size:14.5px;font-weight:600;padding:9px 18px;border-radius:8px;transition:all .15s}
   .btn-primary{background:var(--blue);color:#fff}
@@ -108,11 +100,8 @@
   .btn-ghost{border:1px solid var(--line);color:var(--ink)}
   .btn-ghost:hover{border-color:var(--blue);color:var(--blue)}
   .portrait{width:330px;height:auto;filter:drop-shadow(0 8px 22px rgba(0,0,0,0.16));align-self:center;margin-top:-50px}
-  .hero .hero-bio p{text-align:justify}
   @media(max-width:720px){
     .hero{grid-template-columns:1fr;text-align:center;padding-top:44px}
-    .hero h1{font-size:34px}
-    .hero p.blurb{margin-left:auto;margin-right:auto}
     .hero-links{justify-content:center}
     .portrait{order:-1;margin:0 auto;width:200px;height:auto}
   }
@@ -149,7 +138,7 @@
   .svc{border:1px solid var(--line);border-radius:10px;padding:18px 20px}
   .svc h4{font-size:15.5px;font-family:'Inter',sans-serif;font-weight:600;margin-bottom:4px;color:var(--ink)}
   .svc p{font-size:13.5px;color:var(--gray)}
-  .svc a{color:var(--blue);text-decoration:none;font-weight:500}
+  .svc a{color:var(--link);text-decoration:none;font-weight:500}
   .svc a:hover{text-decoration:underline}
   @media(max-width:720px){.svc-grid{grid-template-columns:1fr}}
 
@@ -161,11 +150,6 @@
   /* ---------- FOOTER ---------- */
   footer{max-width:var(--maxw);margin:0 auto;padding:40px 24px 60px;color:var(--gray);font-size:14px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
   footer a{color:var(--blue);text-decoration:none}
-
-  [lang-es]{display:none}
-  body.es [lang-en]{display:none}
-  body.es [lang-es]{display:inline}
-  body.es [lang-es].block{display:block}
 </style>
 </head>
 <body>
@@ -175,11 +159,10 @@
     <a href="#top" class="brand">Luciana Manuali</a>
     <button class="menu-btn" onclick="document.getElementById('nl').classList.toggle('open')">☰</button>
     <div class="nav-links" id="nl">
-      <a href="#research"><span lang-en>Research</span><span lang-es>Investigación</span></a>
-      <a href="#teaching"><span lang-en>Teaching</span><span lang-es>Docencia</span></a>
-      <a href="#service"><span lang-en>Service &amp; Community</span><span lang-es>Servicio</span></a>
+      <a href="#research">Research</a>
+      <a href="#teaching">Teaching</a>
+      <a href="#service">Service &amp; Community</a>
       <a href="#cv">CV</a>
-      <button class="lang" onclick="document.body.classList.toggle('es')"><span lang-en>ES</span><span lang-es>EN</span></button>
     </div>
   </div>
 </nav>
@@ -187,16 +170,16 @@
 <!-- HERO -->
 <div id="top" class="hero" style="max-width:var(--maxw);margin:0 auto">
   <div>
-    <h2 class="hero-welcome"><span lang-en>Welcome to my website!</span><span lang-es>¡Bienvenidos/as a mi sitio!</span></h2>
+    <h2 class="hero-welcome">Welcome to my website!</h2>
     <div class="hero-bio">
-      <p><span lang-en>I'm a PhD Candidate in Economics at the <a href="https://www.uabidea.eu/" target="_blank" rel="noopener">IDEA Graduate Program</a>, jointly run by the <a href="https://www.iae.csic.es/" target="_blank" rel="noopener">Institut d'Anàlisi Econòmica (IAE-CSIC)</a>, the <a href="https://www.uab.cat/web/universitat-autonoma-de-barcelona-1345467954409.html" target="_blank" rel="noopener">Universitat Autònoma de Barcelona</a>, and the <a href="https://bse.eu/" target="_blank" rel="noopener">Barcelona School of Economics</a>. My supervisors are <a href="https://sites.google.com/site/cristinabellesobrero/" target="_blank" rel="noopener">Cristina Bellés-Obrero</a> and <a href="https://sites.google.com/site/lidiafarre78/home" target="_blank" rel="noopener">Lídia Farré</a>.</span><span lang-es>Soy doctoranda en Economía en el <a href="https://www.uabidea.eu/" target="_blank" rel="noopener">IDEA Graduate Program</a>, organizado conjuntamente por el <a href="https://www.iae.csic.es/" target="_blank" rel="noopener">Institut d'Anàlisi Econòmica (IAE-CSIC)</a>, la <a href="https://www.uab.cat/web/universitat-autonoma-de-barcelona-1345467954409.html" target="_blank" rel="noopener">Universitat Autònoma de Barcelona</a> y la <a href="https://bse.eu/" target="_blank" rel="noopener">Barcelona School of Economics</a>. Mis directoras son <a href="https://sites.google.com/site/cristinabellesobrero/" target="_blank" rel="noopener">Cristina Bellés-Obrero</a> y <a href="https://sites.google.com/site/lidiafarre78/home" target="_blank" rel="noopener">Lídia Farré</a>.</span></p>
-      <p><span lang-en>I'm an applied microeconomist with a special interest in labor economics, gender economics, and development economics. My research aims to inform the design of public policy through rigorous evidence on social and economic questions.</span><span lang-es>Soy microeconomista aplicada con especial interés en economía laboral, economía de género y economía del desarrollo. Creo que la investigación tiene un rol importante en comprender los desafíos sociales y económicos que enfrentamos, y en informar el diseño de políticas públicas para que contribuyan mejor al desarrollo y al bienestar social.</span></p>
-      <p><span lang-en>Before my PhD, I completed a Master in Economics and Finance at <a href="https://cemfi.es/" target="_blank" rel="noopener">CEMFI</a> and my undergraduate degree at the <a href="https://www.eco.unc.edu.ar/" target="_blank" rel="noopener">Universidad Nacional de Córdoba</a>, Argentina.</span><span lang-es>Antes del doctorado, cursé el Máster en Economía y Finanzas en <a href="https://cemfi.es/" target="_blank" rel="noopener">CEMFI</a> y mi grado en la <a href="https://www.eco.unc.edu.ar/" target="_blank" rel="noopener">Universidad Nacional de Córdoba</a>, Argentina.</span></p>
-      <p class="contact"><span lang-en>You can reach me at</span><span lang-es>Podés escribirme a</span> <a href="mailto:manuali.luciana@gmail.com">manuali.luciana@gmail.com</a>.</p>
+      <p>I'm a PhD Candidate in Economics at the <a href="https://www.uabidea.eu/" target="_blank" rel="noopener">IDEA Graduate Program</a>, jointly run by the <a href="https://www.iae.csic.es/" target="_blank" rel="noopener">Institut d'Anàlisi Econòmica (IAE-CSIC)</a>, the <a href="https://www.uab.cat/web/universitat-autonoma-de-barcelona-1345467954409.html" target="_blank" rel="noopener">Universitat Autònoma de Barcelona</a>, and the <a href="https://bse.eu/" target="_blank" rel="noopener">Barcelona School of Economics</a>. My advisors are <a href="https://sites.google.com/site/cristinabellesobrero/" target="_blank" rel="noopener">Cristina Bellés-Obrero</a> and <a href="https://sites.google.com/site/lidiafarre78/home" target="_blank" rel="noopener">Lídia Farré</a>.</p>
+      <p>I'm an applied microeconomist with a special interest in labor economics, gender economics, and development economics.</p>
+      <p>Before my PhD, I completed a Master in Economics and Finance at <a href="https://cemfi.es/" target="_blank" rel="noopener">CEMFI</a> and my undergraduate degree at the <a href="https://www.eco.unc.edu.ar/" target="_blank" rel="noopener">Universidad Nacional de Córdoba</a>, Argentina.</p>
+      <p class="contact">You can reach me at <a href="mailto:luciana.manuali@iae.csic.es">luciana.manuali@iae.csic.es</a> or <a href="mailto:manuali.luciana@gmail.com">manuali.luciana@gmail.com</a>.</p>
     </div>
     <div class="hero-links">
       <a class="btn btn-primary" href="https://www.linkedin.com/in/luciana-manuali/" target="_blank" rel="noopener">LinkedIn</a>
-      <a class="btn btn-ghost" href="#cv">CV (PDF)</a>
+      <a class="btn btn-ghost" href="#cv">CV</a>
     </div>
   </div>
   <!-- PHOTO: shows profile_photo.png as a free cutout. To change it, upload a new file and update src="..." below. -->
@@ -205,53 +188,53 @@
 
 <!-- RESEARCH -->
 <section id="research">
-  <div class="eyebrow"><span lang-en>Research</span><span lang-es>Investigación</span></div>
-  <h2 class="section-title"><span lang-en>Working papers</span><span lang-es>Documentos de trabajo</span></h2>
-  <p class="section-lead"><span lang-en>Understanding the problems that affect people, and helping policy respond. Drafts available upon request — feel free to email me.</span><span lang-es>Entender las problemáticas que atraviesan a las personas, y aportar a que la política responda. Borradores disponibles a pedido — escríbeme sin problema.</span></p>
+  <div class="eyebrow">Research</div>
+  <h2 class="section-title">Working papers</h2>
+  <p class="section-lead">Understanding the problems that affect people, and helping policy respond. Drafts available upon request — feel free to email me.</p>
 
   <div class="paper">
     <div>
       <h3>Criminalizing Digital Sexual Violence: Evidence from Mexico's <em>Ley Olimpia</em></h3>
-      <p class="plain"><span lang-en>The first causal evidence that criminalizing digital sexual violence reduces it.</span><span lang-es>La primera evidencia causal de que criminalizar la violencia sexual digital la reduce.</span></p>
-      <p class="abstract"><span lang-en>Exploiting the staggered adoption of Mexico's Ley Olimpia across 32 states, I find the law reduced non-consensual sharing of intimate content among women aged 18–24 by 3.8 percentage points — roughly a 60% reduction. Event-study estimates show no pre-trends and an immediate effect. I interpret the results through a two-stage framework of awareness and behavioral response.</span><span lang-es>Aprovechando la adopción escalonada de la Ley Olimpia en los 32 estados de México, encuentro que la ley redujo la difusión no consentida de contenido íntimo entre mujeres de 18 a 24 años en 3.8 puntos porcentuales — cerca de un 60% de reducción. Los estudios de evento no muestran tendencias previas y sí un efecto inmediato. Interpreto los resultados mediante un marco de dos etapas: concientización y respuesta conductual.</span></p>
+      <p class="plain">The first causal evidence that criminalizing digital sexual violence reduces it.</p>
+      <p class="abstract">Exploiting the staggered adoption of Mexico's Ley Olimpia across 32 states, I find the law reduced non-consensual sharing of intimate content among women aged 18–24 by 3.8 percentage points — roughly a 60% reduction. Event-study estimates show no pre-trends and an immediate effect. I interpret the results through a two-stage framework of awareness and behavioral response.</p>
       <div class="meta"><span class="tag">Job Market Paper</span><span class="tag">June 2026</span><span class="tag">Gender · Crime · Law</span></div>
-      <p class="req"><span lang-en>Draft available upon request.</span><span lang-es>Borrador disponible a pedido.</span></p>
+      <p class="req">Draft available upon request.</p>
     </div>
     <div class="figwrap">
       <div class="fig">[ Figure 4 — Event study: severe online sharing, women 18–24. Flat pre-trends, sharp drop at adoption. ]</div>
-      <p class="fig-cap"><span lang-en>Event-study estimates (Callaway &amp; Sant'Anna 2021).</span><span lang-es>Estimaciones de estudio de evento (Callaway &amp; Sant'Anna 2021).</span></p>
+      <p class="fig-cap">Event-study estimates (Callaway &amp; Sant'Anna 2021).</p>
     </div>
   </div>
 
   <div class="paper">
     <div>
       <h3>The Impact of Raising Labor Standards for Domestic Workers: Evidence from Spain</h3>
-      <p class="plain"><span lang-en>A reform that formalized contracts on paper — but barely touched the working day.</span><span lang-es>Una reforma que formalizó los contratos en el papel — pero apenas cambió la jornada real.</span></p>
-      <p class="abstract"><span lang-en>Using a difference-in-differences design on Spanish labor-force microdata, I study Royal Decree 1620/2011. The share of domestic workers without a written contract fell by 38%, with almost no employment loss. Yet hours and unpaid overtime barely moved: the real adjustment came through more multiple-job holding and sharply shorter tenure — formalization on paper, slower change inside the home.</span><span lang-es>Con un diseño de diferencias en diferencias sobre microdatos de la EPA, estudio el Real Decreto 1620/2011. La proporción de trabajadoras del hogar sin contrato escrito cayó un 38%, casi sin pérdida de empleo. Pero las horas y las horas extra no pagadas apenas se movieron: el ajuste real vino por más pluriempleo y una antigüedad mucho más corta — formalización en el papel, cambio más lento dentro del hogar.</span></p>
+      <p class="plain">A reform that formalized contracts on paper — but barely touched the working day.</p>
+      <p class="abstract">Using a difference-in-differences design on Spanish labor-force microdata, I study Royal Decree 1620/2011. The share of domestic workers without a written contract fell by 38%, with almost no employment loss. Yet hours and unpaid overtime barely moved: the real adjustment came through more multiple-job holding and sharply shorter tenure — formalization on paper, slower change inside the home.</p>
       <div class="meta"><span class="tag">Working Paper</span><span class="tag">March 2026</span><span class="tag">Labor · Gender · Informality</span></div>
-      <p class="req"><span lang-en>Draft available upon request.</span><span lang-es>Borrador disponible a pedido.</span></p>
+      <p class="req">Draft available upon request.</p>
     </div>
     <div class="figwrap">
       <div class="fig">[ Figure 1 — Female domestic workers vs. Social-Security affiliation, 2009–2015. The two lines diverge, then formal employment jumps after 2012. ]</div>
-      <p class="fig-cap"><span lang-en>Total vs. formally registered domestic workers.</span><span lang-es>Trabajadoras del hogar totales vs. registradas formalmente.</span></p>
+      <p class="fig-cap">Total vs. formally registered domestic workers.</p>
     </div>
   </div>
 </section>
 
 <!-- TEACHING -->
 <section id="teaching">
-  <div class="eyebrow"><span lang-en>Teaching</span><span lang-es>Docencia</span></div>
-  <h2 class="section-title"><span lang-en>Teaching is where I do my best work</span><span lang-es>La docencia es donde doy lo mejor de mí</span></h2>
+  <div class="eyebrow">Teaching</div>
+  <h2 class="section-title">Teaching is where I do my best work</h2>
 
-  <div class="throughline"><span lang-en>Every class I teach closes the same way: a round where I remind each student they have a superpower — and that they can change the world for the better.</span><span lang-es>Toda clase que doy cierra igual: una ronda donde les recuerdo a cada estudiante que tienen un superpoder — y que pueden cambiar el mundo para mejor.</span></div>
+  <div class="throughline">Every class I teach closes the same way: a round where I remind each student they have a superpower — and that they can change the world for the better.</div>
 
   <div class="prose">
-    <p><span lang-en>I teach econometrics and economics on the belief that people learn what they <em>do</em>, not what they're told. So my classroom is a participatory one. Students don't watch me derive a concept — they become it. To teach production functions in intro economics, I stage a live orange-juice production line. To teach splines, we build a human spline, students joining hands to trace the curve. To teach cross-validation, the whole room <em>becomes</em> the algorithm. We run mock news broadcasts, turn papers into short plays, hold debates on competing research designs, and settle questions with rapid-fire ping-pong rounds.</span><span lang-es>Enseño econometría y economía convencida de que la gente aprende lo que <em>hace</em>, no lo que le dicen. Por eso mi aula es participativa. Los estudiantes no me miran derivar un concepto — se convierten en él. Para enseñar funciones de producción en introducción, montamos una línea de producción de jugo de naranja en vivo. Para enseñar splines, armamos una spline humana, agarrándonos de las manos para trazar la curva. Para enseñar validación cruzada, toda la clase <em>es</em> el algoritmo. Hacemos noticieros simulados, convertimos papers en pequeñas obras de teatro, debatimos diseños de investigación y resolvemos preguntas con rondas de ping-pong.</span></p>
-    <p><span lang-en>The play is not decoration — it's the method. When students dance, compete, act out a paper, or write a song to explain a topic, they stop being spectators and start owning the material. And because learning is also emotional, we make room for that too: a few minutes of breathing or yoga to reset before a hard proof, and a closing ritual that sends everyone out feeling capable.</span><span lang-es>El juego no es decoración — es el método. Cuando bailan, compiten, teatralizan un paper o escriben una canción para explicar un tema, dejan de ser espectadores y se apropian del contenido. Y como aprender también es emocional, le hacemos lugar a eso: unos minutos de respiración o yoga para resetear antes de una demostración difícil, y un cierre que manda a cada persona a la salida sintiéndose capaz.</span></p>
-    <p><span lang-en>My next challenge is teaching this way in the era of AI — keeping students fully inside the process of thinking, not outside it.</span><span lang-es>Mi próximo desafío es enseñar así en la era de la IA — manteniendo a los estudiantes plenamente dentro del proceso de pensar, no fuera de él.</span></p>
+    <p>I teach econometrics and economics on the belief that people learn what they <em>do</em>, not what they're told. So my classroom is a participatory one. Students don't watch me derive a concept — they become it. To teach production functions in intro economics, I stage a live orange-juice production line. To teach splines, we build a human spline, students joining hands to trace the curve. To teach cross-validation, the whole room <em>becomes</em> the algorithm. We run mock news broadcasts, turn papers into short plays, hold debates on competing research designs, and settle questions with rapid-fire ping-pong rounds.</p>
+    <p>The play is not decoration — it's the method. When students dance, compete, act out a paper, or write a song to explain a topic, they stop being spectators and start owning the material. And because learning is also emotional, we make room for that too: a few minutes of breathing or yoga to reset before a hard proof, and a closing ritual that sends everyone out feeling capable.</p>
+    <p>My next challenge is teaching this way in the era of AI — keeping students fully inside the process of thinking, not outside it.</p>
   </div>
 
-  <h3 class="sub"><span lang-en>In practice</span><span lang-es>En la práctica</span></h3>
+  <h3 class="sub">In practice</h3>
   <div class="chips">
     <div class="chip"><b>Orange-juice</b> production function</div>
     <div class="chip"><b>Human spline</b>, hands joined</div>
@@ -263,53 +246,53 @@
     <div class="chip"><b>Breathing &amp; yoga</b> resets</div>
   </div>
 
-  <h3 class="sub"><span lang-en>Courses</span><span lang-es>Cursos</span></h3>
+  <h3 class="sub">Courses</h3>
   <ul class="courses">
-    <li><span><span lang-en>Advanced Panel Data Methods &amp; Nonparametric Methods <span lang-en></span>(Graduate)</span><span lang-es>Métodos Avanzados de Datos de Panel y Métodos No Paramétricos (Posgrado)</span></span><span class="where">Barcelona School of Economics · 2026</span></li>
-    <li><span>Data Analysis · Text Analysis <span lang-en>(Graduate)</span><span lang-es>(Posgrado)</span></span><span class="where">IDEA · UAB · 2026</span></li>
-    <li><span>Data Science &amp; AI <span lang-en>(Graduate)</span><span lang-es>(Posgrado)</span></span><span class="where">UAB · 2025</span></li>
-    <li><span><span lang-en>Mathematics for Finance (Graduate)</span><span lang-es>Matemática para Finanzas (Posgrado)</span></span><span class="where">ICDA · UCC · 2022–23</span></li>
-    <li><span><span lang-en>Monetary Economics · Introductory Economics (Undergraduate)</span><span lang-es>Economía Monetaria · Introducción a la Economía (Grado)</span></span><span class="where">Universidad Nacional de Córdoba · 2021–23</span></li>
+    <li><span>Advanced Panel Data Methods &amp; Nonparametric Methods (Graduate)</span><span class="where">Barcelona School of Economics · 2026</span></li>
+    <li><span>Data Analysis · Text Analysis (Graduate)</span><span class="where">IDEA · UAB · 2026</span></li>
+    <li><span>Data Science &amp; AI (Graduate)</span><span class="where">UAB · 2025</span></li>
+    <li><span>Mathematics for Finance (Graduate)</span><span class="where">ICDA · UCC · 2022–23</span></li>
+    <li><span>Monetary Economics · Introductory Economics (Undergraduate)</span><span class="where">Universidad Nacional de Córdoba · 2021–23</span></li>
   </ul>
 
-  <div class="media-slot"><span lang-en>▶ Space reserved for photos and short videos of the plays, games, and classroom moments.</span><span lang-es>▶ Espacio reservado para fotos y videos cortos de las obras, juegos y momentos de clase.</span></div>
+  <div class="media-slot">▶ Space reserved for photos and short videos of the plays, games, and classroom moments.</div>
 </section>
 
 <!-- SERVICE -->
 <section id="service">
-  <div class="eyebrow"><span lang-en>Service &amp; Community</span><span lang-es>Servicio y Comunidad</span></div>
-  <h2 class="section-title"><span lang-en>Building the spaces I want to be part of</span><span lang-es>Construyendo los espacios de los que quiero ser parte</span></h2>
-  <p class="section-lead"><span lang-en>From organizing seminars and conferences to the small things that make an academic community feel human.</span><span lang-es>Desde organizar seminarios y congresos hasta las cosas pequeñas que hacen que una comunidad académica se sienta humana.</span></p>
+  <div class="eyebrow">Service &amp; Community</div>
+  <h2 class="section-title">Building the spaces I want to be part of</h2>
+  <p class="section-lead">From organizing seminars and conferences to the small things that make an academic community feel human.</p>
 
   <div class="svc-grid">
-    <div class="svc"><h4><span lang-en>Organizer — CORE Annual Meeting</span><span lang-es>Organizadora — CORE Annual Meeting</span></h4><p><span lang-en>An economics meeting at my alma mater in Córdoba. </span><span lang-es>Un encuentro de economía en mi alma máter en Córdoba. </span><a href="https://sites.google.com/site/coreannualmeeting/" target="_blank" rel="noopener">Site ↗</a></p></div>
-    <div class="svc"><h4><span lang-en>Co-organizer — Barcelona Applied PhD Seminar</span><span lang-es>Co-organizadora — Barcelona Applied PhD Seminar</span></h4><p><span lang-en>A peer seminar for applied PhD students. 2026–present.</span><span lang-es>Un seminario entre pares para doctorandos aplicados. 2026–presente.</span></p></div>
-    <div class="svc"><h4><span lang-en>Volunteer — EALE 2026 &amp; BSE Summer Forum</span><span lang-es>Voluntaria — EALE 2026 y BSE Summer Forum</span></h4><p><span lang-en>Supporting the running of major economics conferences.</span><span lang-es>Apoyando la organización de grandes congresos de economía.</span></p></div>
-    <div class="svc"><h4><span lang-en>Community builder — CEMFI</span><span lang-es>Comunidad — CEMFI</span></h4><p><span lang-en>Organized a cultural event, and a coffee to connect first- and second-year master's students. Student representative, 2023–25.</span><span lang-es>Organicé un evento cultural y un café para conectar a estudiantes de primer y segundo año del máster. Representante estudiantil, 2023–25.</span></p></div>
+    <div class="svc"><h4>Organizer — CORE Annual Meeting</h4><p>An economics meeting at my alma mater in Córdoba. <a href="https://sites.google.com/site/coreannualmeeting/" target="_blank" rel="noopener">Site ↗</a></p></div>
+    <div class="svc"><h4>Co-organizer — Barcelona Applied PhD Seminar</h4><p>A peer seminar for applied PhD students. 2026–present.</p></div>
+    <div class="svc"><h4>Volunteer — EALE 2026 &amp; BSE Summer Forum</h4><p>Supporting the running of major economics conferences.</p></div>
+    <div class="svc"><h4>Community builder — CEMFI</h4><p>Organized a cultural event, and a coffee to connect first- and second-year master's students. Student representative, 2023–25.</p></div>
   </div>
 
-  <h3 class="sub"><span lang-en>Presented at</span><span lang-es>Presentado en</span></h3>
+  <h3 class="sub">Presented at</h3>
   <div class="chips">
     <div class="chip">BSE PhD Jamboree 2026</div>
-    <div class="chip"><span lang-en>Applied Working Group · UAB</span><span lang-es>Applied Working Group · UAB</span></div>
+    <div class="chip">Applied Working Group · UAB</div>
   </div>
 </section>
 
 <!-- CV -->
 <section id="cv">
   <div class="eyebrow">CV</div>
-  <h2 class="section-title"><span lang-en>Curriculum Vitae</span><span lang-es>Currículum</span></h2>
-  <p class="section-lead"><span lang-en>The full record — education, research, teaching, awards, and service.</span><span lang-es>El registro completo — formación, investigación, docencia, premios y servicio.</span></p>
-  <a class="btn btn-primary" href="#">↓ <span lang-en>Download CV (PDF)</span><span lang-es>Descargar CV (PDF)</span></a>
+  <h2 class="section-title">Curriculum Vitae</h2>
+  <p class="section-lead">The full record — education, research, teaching, awards, and service.</p>
+  <a class="btn btn-primary" href="#">↓ Download CV</a>
 </section>
 
 <!-- SIDE B (draft, not linked in nav) -->
 <section>
   <div class="sideb">
-    <div class="eyebrow"><span lang-en>Side B</span><span lang-es>Lado B</span> <span class="draft-badge"><span lang-en>Draft — not yet published</span><span lang-es>Borrador — sin publicar</span></span></div>
-    <h2 class="section-title" style="font-size:24px"><span lang-en>Beyond the research</span><span lang-es>Más allá de la investigación</span></h2>
+    <div class="eyebrow">Side B <span class="draft-badge">Draft — not yet published</span></div>
+    <h2 class="section-title" style="font-size:24px">Beyond the research</h2>
     <div class="prose">
-      <p><span lang-en>Where I learned to organize, to lead, and to keep my footing: youth work and community service outside academia — from a group supporting people experiencing homelessness, to visiting the elderly, to volunteering with Creer en Ellas. Plus the breathing and meditation practice that shows up in my classroom. This section is still a draft while I find the right way to tell it.</span><span lang-es>Donde aprendí a organizar, a liderar y a mantenerme en pie: trabajo con jóvenes y servicio comunitario fuera de la academia — desde un grupo de apoyo a personas en situación de calle, hasta visitar a personas mayores, hasta el voluntariado con Creer en Ellas. Más la práctica de respiración y meditación que aparece en mi aula. Esta sección sigue en borrador mientras encuentro la mejor forma de contarla.</span></p>
+      <p>Where I learned to organize, to lead, and to keep my footing: youth work and community service outside academia — from a group supporting people experiencing homelessness, to visiting the elderly, to volunteering with Creer en Ellas. Plus the breathing and meditation practice that shows up in my classroom. This section is still a draft while I find the right way to tell it.</p>
     </div>
   </div>
 </section>
@@ -320,7 +303,6 @@
 </footer>
 
 <script>
-  // close mobile menu on link click
   document.querySelectorAll('#nl a').forEach(a=>a.addEventListener('click',()=>document.getElementById('nl').classList.remove('open')));
 </script>
 </body>
