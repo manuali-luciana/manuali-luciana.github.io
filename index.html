@@ -129,17 +129,23 @@
 
   /* ---------- TEACHING ---------- */
   .throughline{border-left:3px solid var(--orange);padding:6px 0 6px 22px;margin:0 0 34px 0;font-family:'Fraunces',serif;font-size:21px;font-style:italic;color:#333;line-height:1.4}
-  .prose p{margin-bottom:16px;color:#333}
+  .prose p{margin-bottom:16px;color:#333;text-align:justify}
   .prose p:last-child{margin-bottom:0}
   h3.sub{font-size:18px;margin:34px 0 14px;color:var(--blue);font-family:'Inter',sans-serif;font-weight:600}
   .chips{display:flex;flex-wrap:wrap;gap:9px;margin-bottom:8px}
   .chip{font-size:13.5px;background:#fff;border:1px solid var(--line);border-radius:8px;padding:7px 13px;color:#333}
   .chip b{color:var(--blue)}
-  .courses{list-style:none;margin-top:6px}
-  .courses li{padding:12px 0;border-top:1px solid var(--line);font-size:15px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
-  .courses li:first-child{border-top:none}
-  .courses .where{color:var(--gray);font-size:13.5px}
-  .media-slot{margin-top:22px;border:1px dashed var(--line);border-radius:10px;padding:26px;text-align:center;color:var(--gray);font-size:14px;background:var(--wash)}
+  .tlist{list-style:none;margin:2px 0 18px}
+  .tlist li{padding:9px 0;border-top:1px solid var(--line);font-size:15px;color:#333;line-height:1.5}
+  .tlist li:first-child{border-top:none}
+  .tlist .course{font-weight:600}
+  .tlist .det{color:var(--gray);font-size:14px}
+  .tlist a{color:var(--link);text-decoration:none;font-weight:500}
+  .tlist a:hover{text-decoration:underline}
+  .role-h{font-size:13px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--orange);margin:26px 0 6px}
+  .gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:14px}
+  .gallery img{width:100%;height:220px;object-fit:cover;border-radius:10px;border:1px solid var(--line);display:block}
+  @media(max-width:720px){.gallery{grid-template-columns:1fr 1fr}.gallery img{height:150px}}
 
   /* ---------- SERVICE ---------- */
   .svc-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
@@ -239,38 +245,60 @@
 <!-- TEACHING -->
 <section id="teaching">
   <div class="eyebrow">Teaching</div>
-  <h2 class="section-title">Teaching is where I do my best work</h2>
-
-  <div class="throughline">Every class I teach closes the same way: a round where I remind each student they have a superpower, and that they can change the world for the better.</div>
+  <h2 class="section-title">Changing the way we teach and learn economics, one class at a time.</h2>
 
   <div class="prose">
-    <p>I teach econometrics and economics on the belief that people learn what they <em>do</em>, not what they're told. So my classroom is a participatory one. Students don't watch me derive a concept; they become it. To teach production functions in intro economics, I stage a live orange-juice production line. To teach splines, we build a human spline, students joining hands to trace the curve. To teach cross-validation, the whole room <em>becomes</em> the algorithm. We run mock news broadcasts, turn papers into short plays, hold debates on competing research designs, and settle questions with rapid-fire ping-pong rounds.</p>
-    <p>The play is not decoration; it's the method. When students dance, compete, act out a paper, or write a song to explain a topic, they stop being spectators and start owning the material. And because learning is also emotional, we make room for that too: a few minutes of breathing or yoga to reset before a hard proof, and a closing ritual that sends everyone out feeling capable.</p>
-    <p>My next challenge is teaching this way in the era of AI, keeping students fully inside the process of thinking, not outside it.</p>
-  </div>
+    <p>I teach ...</p>
+   </div>
 
   <h3 class="sub">In practice</h3>
   <div class="chips">
-    <div class="chip"><b>Orange-juice</b> production function</div>
-    <div class="chip"><b>Human spline</b>, hands joined</div>
-    <div class="chip">The class <b>becomes the algorithm</b></div>
-    <div class="chip"><b>Mock news broadcast</b></div>
-    <div class="chip"><b>Papers as short plays</b></div>
-    <div class="chip">Kahoot &amp; <b>ping-pong</b> rounds</div>
-    <div class="chip"><b>Songs &amp; live paint</b> for concepts</div>
-    <div class="chip"><b>Breathing &amp; yoga</b> resets</div>
+    <div class="chip">Plays to introduce and rehearse class concepts</div>
+    <div class="chip">Real debates on competing ideas</div>
+    <div class="chip">Mock TV shows</div>
+    <div class="chip">Icebreakers and warm-up games</div>
+    <div class="chip">Team work and competitions</div>
+    <div class="chip">Breathing and yoga resets</div>
   </div>
 
   <h3 class="sub">Courses</h3>
-  <ul class="courses">
-    <li><span>Advanced Panel Data Methods &amp; Nonparametric Methods (Graduate)</span><span class="where">Barcelona School of Economics · 2026</span></li>
-    <li><span>Data Analysis · Text Analysis (Graduate)</span><span class="where">IDEA · UAB · 2026</span></li>
-    <li><span>Data Science &amp; AI (Graduate)</span><span class="where">UAB · 2025</span></li>
-    <li><span>Mathematics for Finance (Graduate)</span><span class="where">ICDA · UCC · 2022–23</span></li>
-    <li><span>Monetary Economics · Introductory Economics (Undergraduate)</span><span class="where">Universidad Nacional de Córdoba · 2021–23</span></li>
+
+  <div class="role-h">Instructor</div>
+  <ul class="tlist">
+    <li><span class="course">Introductory Economics</span> <span class="det">· Universidad Nacional de Córdoba (Undergraduate), 2021–2023</span></li>
+    <li><span class="course">Monetary Economics</span>, practical sessions <span class="det">· Universidad Nacional de Córdoba (Undergraduate), 2021–2023</span></li>
+    <li><span class="course">Mathematics for Finance</span> <span class="det">· ICDA Business School, Universidad Católica de Córdoba (Graduate), 2022–2023</span></li>
   </ul>
 
-  <div class="media-slot">▶ Space reserved for photos and short videos of the plays, games, and classroom moments.</div>
+  <div class="role-h">Teaching Assistant</div>
+  <ul class="tlist">
+    <li><span class="course">Advanced Panel Data Methods</span> <span class="det">· for Prof. <a href="https://sites.google.com/site/lidiafarre78/home" target="_blank" rel="noopener">Lídia Farré</a>, Barcelona School of Economics (Graduate), 2026, 2027</span></li>
+    <li><span class="course">Nonparametric Methods and Distributional Analysis</span> <span class="det">· for Prof. <a href="https://sites.google.com/view/hannawang/" target="_blank" rel="noopener">Hanna Wang</a>, Barcelona School of Economics (Graduate), 2026, 2027</span></li>
+    <li><span class="course">Data Science and AI</span> <span class="det">· for Prof. <a href="https://sites.google.com/site/econrauh/home" target="_blank" rel="noopener">Christopher Rauh</a>, Universitat Autònoma de Barcelona (Graduate), 2025</span></li>
+    <li><span class="course">Econometrics</span> <span class="det">· for Prof. Adrián Moneta Pizarro, Universidad Nacional de Córdoba (Undergraduate)</span></li>
+    <li><span class="course">Statistics III</span> <span class="det">· for Prof. Marcelo Florensa, Universidad Nacional de Córdoba (Undergraduate)</span></li>
+    <li><span class="course">Microeconomics III</span> <span class="det">· for Prof. María Cecilia Avramovich, Universidad Nacional de Córdoba (Undergraduate)</span></li>
+    <li><span class="course">Macroeconomics</span> <span class="det">· for Prof. Ángel Enrique Neder, Universidad Nacional de Córdoba (Undergraduate)</span></li>
+    <li><span class="course">Monetary Economics</span> <span class="det">· for Prof. Ángel Enrique Neder, Universidad Nacional de Córdoba (Undergraduate)</span></li>
+    <li><span class="course">International Economics</span> <span class="det">· for Prof. María Cecilia Gáname, Universidad Nacional de Córdoba (Undergraduate)</span></li>
+  </ul>
+
+  <div class="role-h">Forthcoming (2027)</div>
+  <ul class="tlist">
+    <li><span class="course">Data Analysis</span> <span class="det">· for Prof. <a href="https://sites.google.com/site/econrauh/home" target="_blank" rel="noopener">Christopher Rauh</a>, IDEA · Universitat Autònoma de Barcelona (Graduate)</span></li>
+    <li><span class="course">Text Analysis</span> <span class="det">· for Prof. Miriam Artiles, IDEA · Universitat Autònoma de Barcelona (Graduate)</span></li>
+  </ul>
+
+  <h3 class="sub">In the classroom</h3>
+  <!-- PHOTOS: upload teaching_1.jpg ... teaching_6.jpg to the repo. -->
+  <div class="gallery">
+    <img src="teaching_1.jpg" alt="Teaching moment">
+    <img src="teaching_2.jpg" alt="Teaching moment">
+    <img src="teaching_3.jpg" alt="Teaching moment">
+    <img src="teaching_4.jpg" alt="Teaching moment">
+    <img src="teaching_5.jpg" alt="Teaching moment">
+    <img src="teaching_6.jpg" alt="Teaching moment">
+  </div>
 </section>
 
 <!-- SERVICE -->
