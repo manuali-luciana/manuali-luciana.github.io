@@ -115,6 +115,7 @@
   .paper .meta{margin-top:16px;display:flex;flex-wrap:wrap;gap:8px;align-items:center}
   .tag{font-size:12.5px;font-weight:600;color:var(--gray);background:var(--wash);border:1px solid var(--line);padding:3px 11px;border-radius:100px}
   .req{font-size:13.5px;color:var(--gray);font-style:italic;margin-top:14px}
+  .presented{font-size:13px;color:var(--gray);margin-top:6px}
   .fig{width:100%;border:1px solid var(--line);border-radius:10px;background:var(--wash);aspect-ratio:4/3;display:flex;align-items:center;justify-content:center;color:var(--gray);font-size:13px;text-align:center;padding:20px;line-height:1.4}
   .fig-cap{font-size:12.5px;color:var(--gray);margin-top:8px;text-align:center}
   .figimg{width:100%;border:1px solid var(--line);border-radius:10px;display:block}
@@ -159,13 +160,14 @@
   @media(max-width:720px){.lb-prev,.lb-next{font-size:38px;padding:8px 12px}}
 
   /* ---------- SERVICE ---------- */
-  .svc-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-  .svc{border:1px solid var(--line);border-radius:10px;padding:18px 20px}
-  .svc h4{font-size:15.5px;font-family:'Inter',sans-serif;font-weight:600;margin-bottom:4px;color:var(--ink)}
-  .svc p{font-size:13.5px;color:var(--gray)}
-  .svc a{color:var(--link);text-decoration:none;font-weight:500}
-  .svc a:hover{text-decoration:underline}
-  @media(max-width:720px){.svc-grid{grid-template-columns:1fr}}
+  .svc-list{list-style:none;margin:2px 0 10px}
+  .svc-list li{padding:11px 0;border-top:1px solid var(--line);font-size:15px;color:#333;line-height:1.55}
+  .svc-list li:first-child{border-top:none}
+  .svc-list .what{font-weight:600}
+  .svc-list .desc{color:var(--gray);font-size:14px}
+  .svc-list a{color:var(--link);text-decoration:none;font-weight:500}
+  .svc-list a:hover{text-decoration:underline}
+  .svc-photo{width:100%;border-radius:12px;border:1px solid var(--line);display:block;margin-top:10px;box-shadow:0 4px 20px rgba(0,0,0,0.08)}
 
   /* ---------- SIDE B (draft) ---------- */
   .sideb{background:var(--wash);border:1px solid var(--line);border-radius:12px;padding:30px}
@@ -226,6 +228,7 @@
       </div>
       <label for="abs1" class="abs-more"><span class="arrow">▸</span> Abstract</label>
       <p class="req">Draft available upon request.</p>
+      <p class="presented">Presented at the Barcelona Applied PhD Seminar (2026), the BSE PhD Jamboree (2026), and the Bellaterra Applied Working Group (2026).</p>
     </div>
     <div class="figwrap">
       <!-- FIGURE: upload digital_violence.png to the repo. -->
@@ -244,6 +247,7 @@
       </div>
       <label for="abs2" class="abs-more"><span class="arrow">▸</span> Abstract</label>
       <p class="req">Draft available upon request.</p>
+      <p class="presented">Based on my master's thesis at CEMFI.</p>
     </div>
     <div class="figwrap">
       <!-- FIGURE: upload domestic_work.png to the repo. -->
@@ -324,21 +328,32 @@
 <!-- SERVICE -->
 <section id="service">
   <div class="eyebrow">Service &amp; Community</div>
-  <h2 class="section-title">Building the spaces I want to be part of</h2>
-  <p class="section-lead">From organizing seminars and conferences to the small things that make an academic community feel human.</p>
+  <h2 class="section-title">Building community in economics</h2>
 
-  <div class="svc-grid">
-    <div class="svc"><h4>Organizer · CORE Annual Meeting</h4><p>An economics meeting at my alma mater in Córdoba. <a href="https://sites.google.com/site/coreannualmeeting/" target="_blank" rel="noopener">Site ↗</a></p></div>
-    <div class="svc"><h4>Co-organizer · Barcelona Applied PhD Seminar</h4><p>A peer seminar for applied PhD students. 2026–present.</p></div>
-    <div class="svc"><h4>Volunteer · EALE 2026 &amp; BSE Summer Forum</h4><p>Supporting the running of major economics conferences.</p></div>
-    <div class="svc"><h4>Community builder · CEMFI</h4><p>Organized a cultural event, and a coffee to connect first- and second-year master's students. Student representative, 2023–25.</p></div>
-  </div>
+  <h3 class="sub">Organizing &amp; community building</h3>
+  <ul class="svc-list">
+    <li><span class="what">CORE: Córdoba Economics Annual Meeting</span> <span class="desc">· Co-organizer, 2026 edition, FCE-UNC. <a href="https://sites.google.com/site/coreannualmeeting/" target="_blank" rel="noopener">Program ↗</a></span></li>
+    <li><span class="what">Barcelona Applied PhD Seminar</span> <span class="desc">· Co-organizer, 2026–present.</span></li>
+    <li><span class="what">CONECTAR</span> <span class="desc">· Organizer, FCE-UNC, 2025. An afternoon bringing together economists from seven fields to meet students and build a first network between students and alumni.</span></li>
+    <li><span class="what">Cultural lunch and connect-coffee</span> <span class="desc">· Organizer, CEMFI, 2024.</span></li>
+  </ul>
 
-  <h3 class="sub">Presented at</h3>
-  <div class="chips">
-    <div class="chip">BSE PhD Jamboree 2026</div>
-    <div class="chip">Applied Working Group · UAB</div>
-  </div>
+  <h3 class="sub">Academic service</h3>
+  <ul class="svc-list">
+    <li><span class="what">Graduate Ambassador</span> <span class="desc">· FCE-UNC.</span></li>
+    <li><span class="what">Student Representative</span> <span class="desc">· Master in Economics and Finance, CEMFI, 2023–2025.</span></li>
+    <li><span class="what">Internal Quality Assurance Committee</span> <span class="desc">· Member, CEMFI, 2023–2025.</span></li>
+  </ul>
+
+  <h3 class="sub">Conference volunteering</h3>
+  <ul class="svc-list">
+    <li><span class="what">EALE Conference</span> <span class="desc">· 2026</span></li>
+    <li><span class="what">BSE Summer Forum</span> <span class="desc">· 2026</span></li>
+    <li><span class="what">SAEe: Spanish Economic Association Symposium</span> <span class="desc">· 2025</span></li>
+  </ul>
+
+  <!-- PHOTO: upload service_1.jpg (or your chosen file) to the repo. Swap the filename below to change it. -->
+  <img class="svc-photo" src="service_1.jpg" alt="Presenting at an academic gathering">
 </section>
 
 <!-- CV -->
