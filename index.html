@@ -147,10 +147,16 @@
   .gallery img{width:100%;height:220px;object-fit:cover;border-radius:10px;border:1px solid var(--line);display:block;cursor:pointer;transition:transform .15s}
   .gallery img:hover{transform:scale(1.02)}
   @media(max-width:720px){.gallery{grid-template-columns:1fr 1fr}.gallery img{height:150px}}
-  .lightbox{display:none;position:fixed;inset:0;z-index:100;background:rgba(0,0,0,0.88);cursor:zoom-out;padding:30px}
-  .lightbox:target{display:flex;align-items:center;justify-content:center}
-  .lightbox img{max-width:92%;max-height:92%;border-radius:8px;object-fit:contain}
-  .lightbox .close{position:absolute;top:20px;right:30px;color:#fff;font-size:34px;text-decoration:none;font-weight:300;line-height:1}
+  .lightbox{display:none;position:fixed;inset:0;z-index:100;background:rgba(0,0,0,0.9);align-items:center;justify-content:center}
+  .lightbox.open{display:flex}
+  .lightbox img{max-width:88%;max-height:90%;border-radius:8px;object-fit:contain;user-select:none}
+  .lb-btn{position:absolute;background:none;border:none;color:#fff;cursor:pointer;font-weight:300;line-height:1;font-family:'Inter',sans-serif}
+  .lb-close{top:20px;right:30px;font-size:40px}
+  .lb-prev,.lb-next{top:50%;transform:translateY(-50%);font-size:54px;padding:10px 20px;opacity:0.75;transition:opacity .15s}
+  .lb-prev:hover,.lb-next:hover,.lb-close:hover{opacity:1}
+  .lb-prev{left:2%}
+  .lb-next{right:2%}
+  @media(max-width:720px){.lb-prev,.lb-next{font-size:38px;padding:8px 12px}}
 
   /* ---------- SERVICE ---------- */
   .svc-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
@@ -253,7 +259,7 @@
   <h2 class="section-title">Changing the way we teach and learn economics, one class at a time.</h2>
 
   <div class="prose">
-    <p>For me, the classroom is a place of encounter: somewhere we feel comfortable enough to be ourselves, to fail, to learn, and to have fun. I believe learning happens through active participation, when students help build knowledge rather than just receive it. </p>
+    <p>For me, the classroom is a place of encounter: somewhere we feel comfortable enough to be ourselves, to fail, to learn, and to have fun. I believe learning happens through active participation, when students help build knowledge rather than just receive it.</p>
     <p>I care about the human side of the classroom as much as the technical one. My students have enormous potential, and I see teaching as the work of helping them find it, one class at a time.</p>
   </div>
 
@@ -274,46 +280,46 @@
 
   <div class="role-h">Instructor</div>
   <ul class="tlist">
-    <li><span class="course">Introduction to University Studies and Economics</span> <span class="det">· Universidad Nacional de Córdoba (Undergraduate, Spanish), 2022</span></li>
-    <li><span class="course">Monetary Economics</span>, practical sessions <span class="det">· Universidad Nacional de Córdoba (Undergraduate, Spanish), 2022–2023</span></li>
     <li><span class="course">Mathematics for Finance</span> <span class="det">· ICDA Business School, Universidad Católica de Córdoba (Graduate, Spanish), 2022–2023</span></li>
+    <li><span class="course">Monetary Economics</span>, practical sessions <span class="det">· Universidad Nacional de Córdoba (Undergraduate, Spanish), 2022–2023</span></li>
+    <li><span class="course">Introduction to University Studies and Economics</span> <span class="det">· Universidad Nacional de Córdoba (Undergraduate, Spanish), 2022</span></li>
   </ul>
 
   <div class="role-h">Teaching Assistant</div>
   <ul class="tlist">
-    <li><span class="course">Macroeconomics I</span> <span class="det">· for Prof. Ángel Enrique Neder, Universidad Nacional de Córdoba (Undergraduate, Spanish), 2018–2021</span></li>
-    <li><span class="course">Econometrics I</span> <span class="det">· for Prof. Adrián Moneta Pizarro, Universidad Nacional de Córdoba (Undergraduate, Spanish), 2019–2020</span></li>
-    <li><span class="course">Statistics III</span> <span class="det">· for Prof. Marcelo Florensa, Universidad Nacional de Córdoba (Undergraduate, Spanish), 2019</span></li>
-    <li><span class="course">Monetary Economics</span> <span class="det">· for Prof. Ángel Enrique Neder, Universidad Nacional de Córdoba (Undergraduate, Spanish), 2020–2021</span></li>
-    <li><span class="course">Econometrics III</span> <span class="det">· for Prof. Carlos Walter Robledo, Universidad Nacional de Córdoba (Undergraduate, Spanish), 2021</span></li>
-    <li><span class="course">Microeconomics III</span> <span class="det">· for Prof. María Cecilia Avramovich, Universidad Nacional de Córdoba (Undergraduate, Spanish), 2021</span></li>
-    <li><span class="course">International Economics</span> <span class="det">· for Prof. María Cecilia Gáname, Universidad Nacional de Córdoba (Undergraduate, Spanish), 2021</span></li>
-    <li><span class="course">Data Science and AI</span> <span class="det">· for Prof. <a href="https://sites.google.com/site/econrauh/home" target="_blank" rel="noopener">Christopher Rauh</a>, Universitat Autònoma de Barcelona (Graduate, English), 2025</span></li>
     <li><span class="course">Advanced Panel Data Methods</span> <span class="det">· for Prof. <a href="https://sites.google.com/site/lidiafarre78/home" target="_blank" rel="noopener">Lídia Farré</a>, Barcelona School of Economics (Graduate, English), 2026, 2027</span></li>
     <li><span class="course">Nonparametric Methods and Distributional Analysis</span> <span class="det">· for Prof. <a href="https://sites.google.com/view/hannawang/" target="_blank" rel="noopener">Hanna Wang</a>, Barcelona School of Economics (Graduate, English), 2026, 2027</span></li>
     <li><span class="course">Data Analysis</span> <span class="det">· for Prof. <a href="https://sites.google.com/site/econrauh/home" target="_blank" rel="noopener">Christopher Rauh</a>, Universitat Autònoma de Barcelona (Graduate, English), 2026</span></li>
     <li><span class="course">Text Analysis</span> <span class="det">· for Prof. <a href="https://www.miriam-artiles.com/" target="_blank" rel="noopener">Miriam Artiles</a>, Universitat Autònoma de Barcelona (Graduate, English), 2026</span></li>
+    <li><span class="course">Data Science and AI</span> <span class="det">· for Prof. <a href="https://sites.google.com/site/econrauh/home" target="_blank" rel="noopener">Christopher Rauh</a>, Universitat Autònoma de Barcelona (Graduate, English), 2025</span></li>
+    <li><span class="course">Econometrics III</span> <span class="det">· for Prof. Carlos Walter Robledo, Universidad Nacional de Córdoba (Undergraduate, Spanish), 2021</span></li>
+    <li><span class="course">Microeconomics III</span> <span class="det">· for Prof. María Cecilia Avramovich, Universidad Nacional de Córdoba (Undergraduate, Spanish), 2021</span></li>
+    <li><span class="course">International Economics</span> <span class="det">· for Prof. María Cecilia Gáname, Universidad Nacional de Córdoba (Undergraduate, Spanish), 2021</span></li>
+    <li><span class="course">Monetary Economics</span> <span class="det">· for Prof. Ángel Enrique Neder, Universidad Nacional de Córdoba (Undergraduate, Spanish), 2020–2021</span></li>
+    <li><span class="course">Macroeconomics I</span> <span class="det">· for Prof. Ángel Enrique Neder, Universidad Nacional de Córdoba (Undergraduate, Spanish), 2018–2021</span></li>
+    <li><span class="course">Econometrics I</span> <span class="det">· for Prof. Adrián Moneta Pizarro, Universidad Nacional de Córdoba (Undergraduate, Spanish), 2019–2020</span></li>
+    <li><span class="course">Statistics III</span> <span class="det">· for Prof. Marcelo Florensa, Universidad Nacional de Córdoba (Undergraduate, Spanish), 2019</span></li>
   </ul>
 
   <h3 class="sub">In the classroom</h3>
-  <!-- PHOTOS: upload the images to the repo. Click any photo on the site to enlarge it. -->
-  <div class="gallery">
-    <a href="#lb1"><img src="teaching_1.jpg" alt="Teaching moment"></a>
-    <a href="#lb2"><img src="teaching_3.jpg" alt="Teaching moment"></a>
-    <a href="#lb3"><img src="teaching_2.jpg" alt="Teaching moment"></a>
-    <a href="#lb4"><img src="teaching_4.jpg" alt="Teaching moment"></a>
-    <a href="#lb5"><img src="teaching_8.JPG" alt="Teaching moment"></a>
-    <a href="#lb6"><img src="teaching_5.jpg" alt="Teaching moment"></a>
+  <!-- PHOTOS: upload the images to the repo. Click any photo on the site to enlarge it; use the arrows to browse. -->
+  <div class="gallery" id="gallery">
+    <img src="teaching_1.jpg" alt="Teaching moment">
+    <img src="teaching_3.jpg" alt="Teaching moment">
+    <img src="teaching_2.jpg" alt="Teaching moment">
+    <img src="teaching_4.jpg" alt="Teaching moment">
+    <img src="teaching_8.JPG" alt="Teaching moment">
+    <img src="teaching_5.jpg" alt="Teaching moment">
   </div>
 </section>
 
-<!-- LIGHTBOX overlays: clicking a photo opens the matching one full-size -->
-<a href="#top" id="lb1" class="lightbox"><span class="close">×</span><img src="teaching_1.jpg" alt="Teaching moment"></a>
-<a href="#top" id="lb2" class="lightbox"><span class="close">×</span><img src="teaching_3.jpg" alt="Teaching moment"></a>
-<a href="#top" id="lb3" class="lightbox"><span class="close">×</span><img src="teaching_2.jpg" alt="Teaching moment"></a>
-<a href="#top" id="lb4" class="lightbox"><span class="close">×</span><img src="teaching_4.jpg" alt="Teaching moment"></a>
-<a href="#top" id="lb5" class="lightbox"><span class="close">×</span><img src="teaching_8.JPG" alt="Teaching moment"></a>
-<a href="#top" id="lb6" class="lightbox"><span class="close">×</span><img src="teaching_5.jpg" alt="Teaching moment"></a>
+<!-- LIGHTBOX: one overlay, driven by the gallery above -->
+<div class="lightbox" id="lightbox">
+  <button class="lb-btn lb-close" id="lbClose" aria-label="Close">×</button>
+  <button class="lb-btn lb-prev" id="lbPrev" aria-label="Previous">‹</button>
+  <img id="lbImg" src="" alt="Teaching moment enlarged">
+  <button class="lb-btn lb-next" id="lbNext" aria-label="Next">›</button>
+</div>
 
 <!-- SERVICE -->
 <section id="service">
@@ -361,6 +367,28 @@
 
 <script>
   document.querySelectorAll('#nl a').forEach(a=>a.addEventListener('click',()=>document.getElementById('nl').classList.remove('open')));
+
+  // ---- Photo lightbox with arrows ----
+  (function(){
+    var imgs = Array.prototype.slice.call(document.querySelectorAll('#gallery img'));
+    var box = document.getElementById('lightbox');
+    var big = document.getElementById('lbImg');
+    var i = 0;
+    function show(n){ i = (n + imgs.length) % imgs.length; big.src = imgs[i].src; }
+    function open(n){ show(n); box.classList.add('open'); }
+    function close(){ box.classList.remove('open'); }
+    imgs.forEach(function(im, n){ im.addEventListener('click', function(){ open(n); }); });
+    document.getElementById('lbClose').addEventListener('click', close);
+    document.getElementById('lbPrev').addEventListener('click', function(e){ e.stopPropagation(); show(i-1); });
+    document.getElementById('lbNext').addEventListener('click', function(e){ e.stopPropagation(); show(i+1); });
+    box.addEventListener('click', function(e){ if(e.target === box) close(); });
+    document.addEventListener('keydown', function(e){
+      if(!box.classList.contains('open')) return;
+      if(e.key === 'Escape') close();
+      else if(e.key === 'ArrowLeft') show(i-1);
+      else if(e.key === 'ArrowRight') show(i+1);
+    });
+  })();
 </script>
 </body>
 </html>
