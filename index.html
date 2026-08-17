@@ -83,8 +83,9 @@
   section{max-width:var(--maxw);margin:0 auto;padding:78px 24px;border-bottom:1px solid var(--line)}
   section:last-of-type{border-bottom:none}
   .eyebrow{font-family:'Inter',sans-serif;font-size:15px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--orange);margin-bottom:14px}
-  h2.section-title{font-size:30px;margin-bottom:8px;color:var(--ink)}
+  h2.section-title{font-size:30px;margin-bottom:14px;color:var(--ink)}
   .section-lead{color:var(--gray);max-width:620px;margin-bottom:38px}
+  .section-title + .prose{margin-top:0}
 
   /* ---------- HERO ---------- */
   .hero{padding-top:64px;padding-bottom:64px;display:grid;grid-template-columns:1fr auto;gap:48px;align-items:center;border-bottom:1px solid var(--line)}
@@ -168,18 +169,13 @@
   .svc-card p{font-size:14px;color:#555;line-height:1.5;text-align:justify}
   .svc-card a{color:var(--link);text-decoration:none;font-weight:500}
   .svc-card a:hover{text-decoration:underline}
-  .svc-photo{width:100%;border-radius:12px;border:1px solid var(--line);display:block;box-shadow:0 4px 20px rgba(0,0,0,0.10);margin-top:26px}
+  .svc-photo{width:100%;max-width:680px;margin:26px auto 0;border-radius:12px;border:1px solid var(--line);display:block;box-shadow:0 4px 20px rgba(0,0,0,0.10)}
   .svc-photo-cap{font-size:12.5px;color:var(--gray);margin-top:8px;text-align:center}
   .svc-more{margin-top:16px;font-size:14px;color:#444;text-align:center}
   .svc-more .lbl{font-weight:600;color:var(--ink)}
   .svc-more a{color:var(--link);text-decoration:none;font-weight:500}
   .svc-more a:hover{text-decoration:underline}
   @media(max-width:720px){.svc-cards{grid-template-columns:1fr}}
-
-  /* ---------- SIDE B (draft) ---------- */
-  .sideb{background:var(--wash);border:1px solid var(--line);border-radius:12px;padding:30px}
-  .sideb .eyebrow{color:var(--blue)}
-  .draft-badge{display:inline-block;font-size:11.5px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--gray);border:1px solid var(--line);border-radius:100px;padding:3px 10px;margin-left:10px;vertical-align:middle}
 
   /* ---------- FOOTER ---------- */
   footer{max-width:var(--maxw);margin:0 auto;padding:40px 24px 60px;color:var(--gray);font-size:14px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
@@ -336,20 +332,20 @@
 <section id="service">
   <div class="eyebrow">Service &amp; Community</div>
   <h2 class="section-title">Building community in economics</h2>
-  <p class="section-lead">I care about building spaces where the economics community can connect and grow. Advantage comes from connecting and sharing with others.</p>
+  <p class="section-lead">I believe one of our greatest advantages comes from connecting with others. That is why I build spaces where people can meet, exchange ideas, and learn from one another.</p>
 
   <div class="svc-cards">
     <div class="svc-card">
       <h4>CORE: Córdoba Economics Annual Meeting <span class="yr">· Co-organizer, 2026</span></h4>
-      <p>An annual meeting that brings the economics community of my alma mater together: students, faculty, and alumni. <a href="https://sites.google.com/site/coreannualmeeting/" target="_blank" rel="noopener">Program ↗</a></p>
+      <p>An annual meeting that brings the economics community of my alma mater together. <a href="https://sites.google.com/site/coreannualmeeting/" target="_blank" rel="noopener">Site ↗</a></p>
     </div>
     <div class="svc-card">
       <h4>Barcelona Applied PhD Seminar <span class="yr">· Co-organizer, 2026–present</span></h4>
       <p>A peer space where applied PhD students present and grow their work together.</p>
     </div>
     <div class="svc-card">
-      <h4>CONECTAR <span class="yr">· Co-organizer, 2025–present</span></h4>
-      <p>Workshops and encounters connecting advanced students with a network of alumni economists from Córdoba, to share experiences, paths, and ways to grow in the profession.</p>
+      <h4>CONECTAR Network <span class="yr">· Co-organizer, 2025–present</span></h4>
+      <p>Workshops and a growing network that connect students and graduates of the economics program at UNC, so the community can stay linked and grow together.</p>
     </div>
     <div class="svc-card">
       <h4>Community gatherings <span class="yr">· Organizer, 2023–present</span></h4>
@@ -369,18 +365,8 @@
   <div class="eyebrow">CV</div>
   <h2 class="section-title">Curriculum Vitae</h2>
   <p class="section-lead">The full record: education, research, teaching, awards, and service.</p>
-  <a class="btn btn-primary" href="#">↓ Download CV</a>
-</section>
-
-<!-- SIDE B (draft, not linked in nav) -->
-<section>
-  <div class="sideb">
-    <div class="eyebrow">Side B <span class="draft-badge">Draft, not yet published</span></div>
-    <h2 class="section-title" style="font-size:24px">Beyond the research</h2>
-    <div class="prose">
-      <p>Where I learned to organize, to lead, and to keep my footing: youth work and community service outside academia, from a group supporting people experiencing homelessness, to visiting the elderly, to volunteering with Creer en Ellas. Plus the breathing and meditation practice that shows up in my classroom. This section is still a draft while I find the right way to tell it.</p>
-    </div>
-  </div>
+  <!-- CV LINK: replace href="#" with your Google Drive share link (set to "Anyone with the link"). -->
+  <a class="btn btn-primary" href="#" target="_blank" rel="noopener">View CV</a>
 </section>
 
 <footer>
