@@ -2,32 +2,6 @@
 <!--
 ═══════════════════════════════════════════════════════════════════
   LUCIANA MANUALI  ·  PERSONAL WEBSITE
-  How to edit this file (no web experience needed):
-
-  • TO CHANGE TEXT: use Ctrl+F (Cmd+F on Mac) to find the words you
-    want to change, then type over them.<!DOCTYPE html>
-<!--
-═══════════════════════════════════════════════════════════════════
-  LUCIANA MANUALI  ·  PERSONAL WEBSITE
-  How to edit this file (no web experience needed):
-
-  • TO CHANGE TEXT: use Ctrl+F (Cmd+F on Mac) to find the words you
-    want to change, then type over them.
-
-  • TO ADD YOUR PHOTO: search for  class="portrait"  and follow the
-    note there.
-
-  • TO ADD A RESEARCH FIGURE: search for  class="fig", replace the
-    bracketed [ ... ] text with an <img> tag. Note is next to it.
-
-  • TO ADD THE CV: search for  href="#", that link is waiting for
-    a real URL (upload cv.pdf and set href="cv.pdf").
-
-  • Anything inside [ square brackets ] is a placeholder waiting for
-    a real photo, figure, or link.
-
-  Save the file, commit it to GitHub, and the live site updates in
-  about a minute.
 ═══════════════════════════════════════════════════════════════════
 -->
 <html lang="en">
@@ -87,7 +61,7 @@
   }
 
   /* ---------- LAYOUT ---------- */
-  section{max-width:var(--maxw);margin:0 auto;padding:78px 24px;border-bottom:1px solid var(--line)}
+  section{max-width:var(--maxw);margin:0 auto;padding:56px 24px;border-bottom:1px solid var(--line)}
   section:last-of-type{border-bottom:none}
   .eyebrow{font-family:'Inter',sans-serif;font-size:15px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--orange);margin-bottom:14px}
   h2.section-title{font-size:30px;margin-bottom:14px;color:var(--ink)}
@@ -158,7 +132,9 @@
   @media(max-width:720px){.gallery{grid-template-columns:1fr 1fr}.gallery img{height:150px}}
   .lightbox{display:none;position:fixed;inset:0;z-index:100;background:rgba(0,0,0,0.9);align-items:center;justify-content:center}
   .lightbox.open{display:flex}
-  .lightbox img{max-width:88%;max-height:90%;border-radius:8px;object-fit:contain;user-select:none}
+  .lightbox img{max-width:88%;max-height:82vh;border-radius:8px;object-fit:contain;user-select:none}
+  .lb-fig{margin:0;display:flex;flex-direction:column;align-items:center;gap:12px}
+  .lb-fig figcaption{color:#eee;font-size:14.5px;text-align:center;max-width:80%;font-family:'Inter',sans-serif}
   .lb-btn{position:absolute;background:none;border:none;color:#fff;cursor:pointer;font-weight:300;line-height:1;font-family:'Inter',sans-serif}
   .lb-close{top:20px;right:30px;font-size:40px}
   .lb-prev,.lb-next{top:50%;transform:translateY(-50%);font-size:54px;padding:10px 20px;opacity:0.75;transition:opacity .15s}
@@ -226,7 +202,7 @@
 <!-- RESEARCH -->
 <section id="research">
   <div class="eyebrow">Research</div>
-  <h2 class="section-title" style="margin-bottom:34px">Working papers</h2>
+  <h2 class="section-title">Working papers</h2>
 
   <div class="paper">
     <div>
@@ -318,12 +294,12 @@
   <h3 class="sub">In the classroom</h3>
   <!-- PHOTOS: upload the images to the repo. Click any photo on the site to enlarge it; use the arrows to browse. -->
   <div class="gallery" id="gallery">
-    <img src="teaching_1.jpg" alt="Teaching moment">
-    <img src="teaching_3.jpg" alt="Teaching moment">
-    <img src="teaching_2.jpg" alt="Teaching moment">
-    <img src="teaching_4.jpg" alt="Teaching moment">
-    <img src="teaching_8.JPG" alt="Teaching moment">
-    <img src="teaching_5.jpg" alt="Teaching moment">
+    <img src="teaching_1.jpg" alt="Teaching moment" data-cap="A stretch before we start class, UNC">
+    <img src="teaching_3.jpg" alt="Teaching moment" data-cap="After a Saturday workshop on monetary statistics, UNC">
+    <img src="teaching_2.jpg" alt="Teaching moment" data-cap="Teamwork and collaborative thinking, UNC">
+    <img src="teaching_4.jpg" alt="Teaching moment" data-cap="End-of-course smiles, UCC">
+    <img src="teaching_8.JPG" alt="Teaching moment" data-cap="Debating competing ideas, UNC">
+    <img src="teaching_5.jpg" alt="Teaching moment" data-cap="Last day: a closing Kahoot to review the course, BSE">
   </div>
 </section>
 
@@ -331,7 +307,10 @@
 <div class="lightbox" id="lightbox">
   <button class="lb-btn lb-close" id="lbClose" aria-label="Close">×</button>
   <button class="lb-btn lb-prev" id="lbPrev" aria-label="Previous">‹</button>
-  <img id="lbImg" src="" alt="Teaching moment enlarged">
+  <figure class="lb-fig">
+    <img id="lbImg" src="" alt="Teaching moment enlarged">
+    <figcaption id="lbCap"></figcaption>
+  </figure>
   <button class="lb-btn lb-next" id="lbNext" aria-label="Next">›</button>
 </div>
 
@@ -352,7 +331,7 @@
     </div>
     <div class="svc-card">
       <h4>CONECTAR Network <span class="yr">· Co-organizer, 2025–present</span></h4>
-      <p>Workshops and a growing network that keep the economics community of my alma mater connected, linking current students with graduates across the profession.</p>
+      <p>A network and a series of workshops that link current students with graduates already working in the profession.</p>
     </div>
     <div class="svc-card">
       <h4>Community gatherings <span class="yr">· Organizer, 2023–present</span></h4>
@@ -389,403 +368,9 @@
     var imgs = Array.prototype.slice.call(document.querySelectorAll('#gallery img'));
     var box = document.getElementById('lightbox');
     var big = document.getElementById('lbImg');
+    var cap = document.getElementById('lbCap');
     var i = 0;
-    function show(n){ i = (n + imgs.length) % imgs.length; big.src = imgs[i].src; }
-    function open(n){ show(n); box.classList.add('open'); }
-    function close(){ box.classList.remove('open'); }
-    imgs.forEach(function(im, n){ im.addEventListener('click', function(){ open(n); }); });
-    document.getElementById('lbClose').addEventListener('click', close);
-    document.getElementById('lbPrev').addEventListener('click', function(e){ e.stopPropagation(); show(i-1); });
-    document.getElementById('lbNext').addEventListener('click', function(e){ e.stopPropagation(); show(i+1); });
-    box.addEventListener('click', function(e){ if(e.target === box) close(); });
-    document.addEventListener('keydown', function(e){
-      if(!box.classList.contains('open')) return;
-      if(e.key === 'Escape') close();
-      else if(e.key === 'ArrowLeft') show(i-1);
-      else if(e.key === 'ArrowRight') show(i+1);
-    });
-  })();
-</script>
-</body>
-</html>
-
-  • TO ADD YOUR PHOTO: search for  class="portrait"  and follow the
-    note there.
-
-  • TO ADD A RESEARCH FIGURE: search for  class="fig", replace the
-    bracketed [ ... ] text with an <img> tag. Note is next to it.
-
-  • TO ADD THE CV: search for  href="#", that link is waiting for
-    a real URL (upload cv.pdf and set href="cv.pdf").
-
-  • Anything inside [ square brackets ] is a placeholder waiting for
-    a real photo, figure, or link.
-
-  Save the file, commit it to GitHub, and the live site updates in
-  about a minute.
-═══════════════════════════════════════════════════════════════════
--->
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Luciana Manuali</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<style>
-  :root{
-    --blue:#0072B2;
-    --blue-deep:#00527f;
-    --link:#3a7ca5;
-    --orange:#D55E00;
-    --ink:#1c1c1e;
-    --gray:#787878;
-    --line:#e6e6e6;
-    --paper:#ffffff;
-    --wash:#f6f8fa;
-    --maxw:1140px;
-  }
-  *{box-sizing:border-box;margin:0;padding:0}
-  html{scroll-behavior:smooth}
-  body{
-    font-family:'Inter',system-ui,sans-serif;
-    color:var(--ink);
-    background:var(--paper);
-    line-height:1.65;
-    font-size:17px;
-    -webkit-font-smoothing:antialiased;
-  }
-  h1,h2,h3{font-family:'Fraunces',Georgia,serif;font-weight:500;line-height:1.15;letter-spacing:-0.01em}
-
-  /* ---------- NAV ---------- */
-  nav{
-    position:sticky;top:0;z-index:50;
-    background:rgba(255,255,255,0.92);
-    backdrop-filter:blur(8px);
-    border-bottom:1px solid var(--line);
-  }
-  .nav-inner{
-    max-width:var(--maxw);margin:0 auto;padding:0 24px;
-    height:60px;display:flex;align-items:center;justify-content:space-between;
-  }
-  .brand{font-family:'Fraunces',serif;font-weight:600;font-size:19px;color:var(--blue);text-decoration:none;letter-spacing:-0.01em}
-  .nav-links{display:flex;gap:26px;align-items:center}
-  .nav-links a{color:var(--ink);text-decoration:none;font-size:14.5px;font-weight:500;transition:color .15s}
-  .nav-links a:hover{color:var(--blue)}
-  .menu-btn{display:none;background:none;border:none;font-size:24px;color:var(--ink);cursor:pointer}
-  @media(max-width:720px){
-    .nav-links{position:fixed;inset:60px 0 auto 0;background:#fff;flex-direction:column;gap:0;border-bottom:1px solid var(--line);transform:translateY(-120%);transition:transform .25s;padding:8px 0}
-    .nav-links.open{transform:translateY(0)}
-    .nav-links a{padding:12px 24px;width:100%}
-    .menu-btn{display:block}
-  }
-
-  /* ---------- LAYOUT ---------- */
-  section{max-width:var(--maxw);margin:0 auto;padding:78px 24px;border-bottom:1px solid var(--line)}
-  section:last-of-type{border-bottom:none}
-  .eyebrow{font-family:'Inter',sans-serif;font-size:15px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--orange);margin-bottom:14px}
-  h2.section-title{font-size:30px;margin-bottom:14px;color:var(--ink)}
-  .section-lead{color:var(--gray);margin-bottom:38px;text-align:justify}
-  .section-title + .prose{margin-top:0}
-
-  /* ---------- HERO ---------- */
-  .hero{padding-top:64px;padding-bottom:64px;display:grid;grid-template-columns:1fr auto;gap:48px;align-items:center;border-bottom:1px solid var(--line)}
-  .hero .hero-welcome{font-size:26px;color:var(--blue);margin-bottom:20px;font-weight:600}
-  .hero .hero-bio p{margin-bottom:14px;font-size:16px;color:#333;text-align:justify}
-  .hero .hero-bio a{color:var(--link);text-decoration:none;font-weight:500}
-  .hero .hero-bio a:hover{text-decoration:underline}
-  .hero .hero-bio .contact{margin-top:18px;text-align:left}
-  .hero-links{display:flex;flex-wrap:wrap;gap:12px}
-  .btn{display:inline-flex;align-items:center;gap:7px;text-decoration:none;font-size:14.5px;font-weight:600;padding:9px 18px;border-radius:8px;transition:all .15s}
-  .btn-primary{background:var(--blue);color:#fff}
-  .btn-primary:hover{background:var(--blue-deep)}
-  .btn-ghost{border:1px solid var(--line);color:var(--ink)}
-  .btn-ghost:hover{border-color:var(--blue);color:var(--blue)}
-  .portrait{width:330px;height:auto;filter:drop-shadow(0 8px 22px rgba(0,0,0,0.16));align-self:center;margin-top:-50px}
-  @media(max-width:720px){
-    .hero{grid-template-columns:1fr;text-align:center;padding-top:44px}
-    .hero-links{justify-content:center}
-    .portrait{order:-1;margin:0 auto;width:200px;height:auto}
-  }
-
-  /* ---------- RESEARCH ---------- */
-  .paper{display:grid;grid-template-columns:1fr 480px;gap:40px;padding:34px 0;border-top:1px solid var(--line);align-items:start}
-  .paper:first-of-type{border-top:none}
-  .paper h3{font-size:22px;margin-bottom:8px}
-  .paper .plain{color:var(--blue);font-weight:600;font-size:15px;margin-bottom:14px;font-family:'Inter',sans-serif}
-  .paper .abstract{font-size:15px;color:#444;line-height:1.6;text-align:justify}
-  .paper .meta{margin-top:16px;display:flex;flex-wrap:wrap;gap:8px;align-items:center}
-  .tag{font-size:12.5px;font-weight:600;color:var(--gray);background:var(--wash);border:1px solid var(--line);padding:3px 11px;border-radius:100px}
-  .req{font-size:13.5px;color:var(--gray);font-style:italic;margin-top:14px}
-  .presented{font-size:13px;color:var(--gray);margin-top:6px}
-  .fig{width:100%;border:1px solid var(--line);border-radius:10px;background:var(--wash);aspect-ratio:4/3;display:flex;align-items:center;justify-content:center;color:var(--gray);font-size:13px;text-align:center;padding:20px;line-height:1.4}
-  .fig-cap{font-size:12.5px;color:var(--gray);margin-top:8px;text-align:center}
-  .figimg{width:100%;border:1px solid var(--line);border-radius:10px;display:block}
-  .abstract-full{display:none;margin-top:12px}
-  .paper input.abs-toggle{display:none}
-  .paper input.abs-toggle:checked ~ .abstract-full{display:block}
-  .abs-more{display:inline-block;margin-top:12px;color:var(--blue);font-size:14px;font-weight:600;cursor:pointer;font-family:'Inter',sans-serif;user-select:none}
-  .abs-more:hover{text-decoration:underline}
-  .abs-more .arrow{display:inline-block;transition:transform .15s}
-  .paper input.abs-toggle:checked ~ .abs-more .arrow{transform:rotate(90deg)}
-  @media(max-width:720px){.paper{grid-template-columns:1fr;gap:20px}.paper .figwrap{order:-1}}
-
-  /* ---------- TEACHING ---------- */
-  .throughline{border-left:3px solid var(--orange);padding:6px 0 6px 22px;margin:0 0 34px 0;font-family:'Fraunces',serif;font-size:21px;font-style:italic;color:#333;line-height:1.4}
-  .prose p{margin-bottom:16px;color:#333;text-align:justify}
-  .prose p:last-child{margin-bottom:0}
-  h3.sub{font-size:18px;margin:34px 0 14px;color:var(--blue);font-family:'Inter',sans-serif;font-weight:600}
-  .chips{display:flex;flex-wrap:wrap;gap:9px;margin-bottom:8px}
-  .chip{font-size:13.5px;background:#fff;border:1px solid var(--line);border-radius:8px;padding:7px 13px;color:#333}
-  .chip b{color:var(--blue)}
-  .tlist{list-style:none;margin:2px 0 18px}
-  .tlist li{padding:9px 0;border-top:1px solid var(--line);font-size:15px;color:#333;line-height:1.5}
-  .tlist li:first-child{border-top:none}
-  .tlist .course{font-weight:600}
-  .tlist .det{color:var(--gray);font-size:14px}
-  .tlist a{color:var(--link);text-decoration:none;font-weight:500}
-  .tlist a:hover{text-decoration:underline}
-  .role-h{font-size:13px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--orange);margin:26px 0 6px}
-  .gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:14px}
-  .gallery img{width:100%;height:220px;object-fit:cover;border-radius:10px;border:1px solid var(--line);display:block;cursor:pointer;transition:transform .15s}
-  .gallery img:hover{transform:scale(1.02)}
-  @media(max-width:720px){.gallery{grid-template-columns:1fr 1fr}.gallery img{height:150px}}
-  .lightbox{display:none;position:fixed;inset:0;z-index:100;background:rgba(0,0,0,0.9);align-items:center;justify-content:center}
-  .lightbox.open{display:flex}
-  .lightbox img{max-width:88%;max-height:90%;border-radius:8px;object-fit:contain;user-select:none}
-  .lb-btn{position:absolute;background:none;border:none;color:#fff;cursor:pointer;font-weight:300;line-height:1;font-family:'Inter',sans-serif}
-  .lb-close{top:20px;right:30px;font-size:40px}
-  .lb-prev,.lb-next{top:50%;transform:translateY(-50%);font-size:54px;padding:10px 20px;opacity:0.75;transition:opacity .15s}
-  .lb-prev:hover,.lb-next:hover,.lb-close:hover{opacity:1}
-  .lb-prev{left:2%}
-  .lb-next{right:2%}
-  @media(max-width:720px){.lb-prev,.lb-next{font-size:38px;padding:8px 12px}}
-
-  /* ---------- SERVICE ---------- */
-  .svc-cards{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:6px}
-  .svc-card{border:1px solid var(--line);border-radius:10px;padding:16px 18px;transition:border-color .15s}
-  .svc-card:hover{border-color:var(--blue)}
-  .svc-card h4{font-size:15.5px;font-family:'Inter',sans-serif;font-weight:600;margin-bottom:3px;color:var(--ink)}
-  .svc-card .yr{color:var(--gray);font-weight:500;font-size:13.5px}
-  .svc-card p{font-size:14px;color:#555;line-height:1.5;text-align:justify}
-  .svc-card a{color:var(--link);text-decoration:none;font-weight:500}
-  .svc-card a:hover{text-decoration:underline}
-  .svc-photo{width:100%;max-width:680px;margin:26px auto 0;border-radius:12px;border:1px solid var(--line);display:block;box-shadow:0 4px 20px rgba(0,0,0,0.10)}
-  .svc-photo-cap{font-size:12.5px;color:var(--gray);margin-top:8px;text-align:center}
-  .svc-more{margin-top:16px;font-size:14px;color:#444;text-align:center}
-  .svc-more .lbl{font-weight:600;color:var(--ink)}
-  .svc-more a{color:var(--link);text-decoration:none;font-weight:500}
-  .svc-more a:hover{text-decoration:underline}
-  @media(max-width:720px){.svc-cards{grid-template-columns:1fr}}
-
-  /* ---------- FOOTER ---------- */
-  footer{max-width:var(--maxw);margin:0 auto;padding:40px 24px 60px;color:var(--gray);font-size:14px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
-  footer a{color:var(--blue);text-decoration:none}
-</style>
-</head>
-<body>
-
-<nav>
-  <div class="nav-inner">
-    <a href="#top" class="brand">Luciana Manuali</a>
-    <button class="menu-btn" onclick="document.getElementById('nl').classList.toggle('open')">☰</button>
-    <div class="nav-links" id="nl">
-      <a href="#research">Research</a>
-      <a href="#teaching">Teaching</a>
-      <a href="#service">Service &amp; Community</a>
-      <a href="#cv">CV</a>
-    </div>
-  </div>
-</nav>
-
-<!-- HERO -->
-<div id="top" class="hero" style="max-width:var(--maxw);margin:0 auto">
-  <div>
-    <h2 class="hero-welcome">Welcome to my website!</h2>
-    <div class="hero-bio">
-      <p>I'm a PhD Candidate in Economics at the <a href="https://www.uabidea.eu/" target="_blank" rel="noopener">IDEA Graduate Program</a>, jointly run by the <a href="https://www.iae.csic.es/" target="_blank" rel="noopener">Institut d'Anàlisi Econòmica (IAE-CSIC)</a>, the <a href="https://www.uab.cat/web/universitat-autonoma-de-barcelona-1345467954409.html" target="_blank" rel="noopener">Universitat Autònoma de Barcelona</a>, and the <a href="https://bse.eu/" target="_blank" rel="noopener">Barcelona School of Economics</a>. My advisors are <a href="https://sites.google.com/site/cristinabellesobrero/" target="_blank" rel="noopener">Cristina Bellés-Obrero</a> and <a href="https://sites.google.com/site/lidiafarre78/home" target="_blank" rel="noopener">Lídia Farré</a>.</p>
-      <p>My research focuses on applied microeconomics, with a special interest in labor economics, gender economics, and development economics.</p>
-      <p>Before my PhD, I completed a Master in Economics and Finance at <a href="https://cemfi.es/" target="_blank" rel="noopener">CEMFI</a> and my undergraduate degree at the <a href="https://www.eco.unc.edu.ar/" target="_blank" rel="noopener">Universidad Nacional de Córdoba</a>, Argentina.</p>
-      <p class="contact">You can reach me at <a href="mailto:luciana.manuali@iae.csic.es">luciana.manuali@iae.csic.es</a> or <a href="mailto:manuali.luciana@gmail.com">manuali.luciana@gmail.com</a>.</p>
-    </div>
-    <div class="hero-links">
-      <a class="btn btn-primary" href="https://www.linkedin.com/in/luciana-manuali/" target="_blank" rel="noopener">LinkedIn</a>
-      <a class="btn btn-ghost" href="#cv">CV</a>
-    </div>
-  </div>
-  <!-- PHOTO: shows profile_photo.png as a free cutout. To change it, upload a new file and update src="..." below. -->
-  <img class="portrait" src="profile_photo.png" alt="Luciana Manuali">
-</div>
-
-<!-- RESEARCH -->
-<section id="research">
-  <div class="eyebrow">Research</div>
-  <h2 class="section-title" style="margin-bottom:34px">Working papers</h2>
-
-  <div class="paper">
-    <div>
-      <h3>Criminalizing Digital Sexual Violence: Evidence from Mexico's <em>Ley Olimpia</em></h3>
-      <p class="plain">The first causal evidence that criminalizing digital sexual violence reduces it.</p>
-      <input type="checkbox" id="abs1" class="abs-toggle">
-      <div class="abstract-full">
-        <p class="abstract">Digital sexual violence, including the non-consensual sharing of intimate images, online harassment, and deepfakes, has emerged as a pervasive form of gender-based violence, yet legal frameworks have lagged behind technological change. This paper provides the first causal evaluation of a law criminalizing digital sexual violence. I exploit the staggered adoption of Mexico's Ley Olimpia across its 32 states between 2018 and 2021, using nationally representative microdata from INEGI's Módulo sobre Ciberacoso (MOCIBA). Employing a staggered difference-in-differences design, I find that the law reduced the non-consensual online sharing of personal or intimate content by 3.8 percentage points among women aged 18 to 24, roughly a 60 percent reduction relative to the counterfactual level victimization would have reached for treated cohorts absent the law. Event-study estimates reveal no pre-trends and immediate effects upon adoption. I interpret the results through a two-stage framework: an awareness stage, in which adoption raises public information about the new offense, and a behavioral stage, in which both potential victims and potential perpetrators respond. Consistent with this framework, Google search interest for the law peaks around adoption and remains elevated thereafter, self-assessed information protection rises among young women, and the reduction in victimization is larger in states that adopted higher penalties. These findings suggest that targeted criminalization can meaningfully curb technology-facilitated abuse.</p>
-      </div>
-      <label for="abs1" class="abs-more"><span class="arrow">▸</span> Abstract</label>
-      <p class="req">Draft available upon request.</p>
-      <p class="presented">Presented at the Barcelona Applied PhD Seminar (2026), the BSE PhD Jamboree (2026), and the Bellaterra Applied Working Group (2026).</p>
-    </div>
-    <div class="figwrap">
-      <!-- FIGURE: upload digital_violence.png to the repo. -->
-      <img class="figimg" src="digital_violence.png" alt="Event study: effect on severe online sharing, women 18 to 24">
-      <p class="fig-cap">Event-study estimates for women 18 to 24 (Callaway &amp; Sant'Anna 2021).</p>
-    </div>
-  </div>
-
-  <div class="paper">
-    <div>
-      <h3>The Impact of Raising Labor Standards for Domestic Workers</h3>
-      <p class="plain">Formalizing contracts on paper did not change the working day.</p>
-      <input type="checkbox" id="abs2" class="abs-toggle">
-      <div class="abstract-full">
-        <p class="abstract">This paper examines how Spain's Royal Decree 1620/2011, a sector-specific labor reform targeting domestic workers, affected their job quality and employment outcomes. Using a difference-in-differences design, I compare women employed in domestic service with women working in low-wage service activities not directly affected by the reform. The analysis draws on quarterly microdata from Spain's labor-force survey (Encuesta de Población Activa, EPA) from 2008 to 2015. I find that the reform generated substantial contractual formalization: the share of domestic workers without a written contract fell by about 8 percentage points, a 38 percent reduction relative to baseline. The probability of holding an indefinite contract rose by about 3 percentage points. Employment declined by only about 1 percentage point, indicating minimal adjustment in overall labor demand. However, measures related to working time changed very little. Average weekly hours and total hours worked remained essentially unchanged, and unpaid extra hours did not decline. The main adjustment occurred in how work was distributed across employers: the probability of holding more than one job increased by about 0.7 percentage points. Average tenure fell by roughly 21 months, consistent with long-standing informal relationships being replaced by new, more formal arrangements. These results highlight that sector-specific labor reforms can substantially improve contractual coverage without reducing employment, though effective working conditions within households may be slower to change.</p>
-      </div>
-      <label for="abs2" class="abs-more"><span class="arrow">▸</span> Abstract</label>
-      <p class="req">Draft available upon request.</p>
-      <p class="presented">Based on my master's thesis at CEMFI.</p>
-    </div>
-    <div class="figwrap">
-      <!-- FIGURE: upload domestic_work.png to the repo. -->
-      <img class="figimg" src="domestic_work.png" alt="Event study: effect on having a verbal contract">
-      <p class="fig-cap">Effect on holding a verbal (informal) contract, event study.</p>
-    </div>
-  </div>
-</section>
-
-<!-- TEACHING -->
-<section id="teaching">
-  <div class="eyebrow">Teaching</div>
-  <h2 class="section-title">Changing the way we teach and learn economics</h2>
-
-  <div class="prose">
-    <p>For me, the classroom is a place of encounter: a space where everyone feels comfortable to participate, ask questions, make mistakes, and have fun. Because I believe learning requires active participation, I design my classes around doing, discussing, experimenting, and playing.</p>
-    <p>Alongside the technical side of economics, I care deeply about the human side of teaching. I want students to gain the confidence to think for themselves, engage with different ideas, and discover what they are capable of.</p>
-  </div>
-
-  <h3 class="sub">In practice</h3>
-  <div class="chips">
-    <div class="chip">Plays to introduce and rehearse class concepts</div>
-    <div class="chip">Real debates on competing ideas</div>
-    <div class="chip">Turning a paper into theater</div>
-    <div class="chip">Mock TV shows: you're the economist on air</div>
-    <div class="chip">Writing a song about a concept</div>
-    <div class="chip">Icebreakers and warm-up games</div>
-    <div class="chip">Team work and competitions</div>
-    <div class="chip">Active participation and learning</div>
-    <div class="chip">Breathing and yoga resets</div>
-  </div>
-
-  <h3 class="sub">Courses</h3>
-
-  <div class="role-h">Instructor</div>
-  <ul class="tlist">
-    <li><span class="course">Mathematics for Finance</span> <span class="det">· ICDA Business School, Universidad Católica de Córdoba (Graduate, Spanish), 2022–2023</span></li>
-    <li><span class="course">Monetary Economics</span>, practical sessions <span class="det">· Universidad Nacional de Córdoba (Undergraduate, Spanish), 2022–2023</span></li>
-    <li><span class="course">Introduction to University Studies and Economics</span> <span class="det">· Universidad Nacional de Córdoba (Undergraduate, Spanish), 2022</span></li>
-  </ul>
-
-  <div class="role-h">Teaching Assistant</div>
-  <ul class="tlist">
-    <li><span class="course">Advanced Panel Data Methods</span> <span class="det">· for Prof. <a href="https://sites.google.com/site/lidiafarre78/home" target="_blank" rel="noopener">Lídia Farré</a>, Barcelona School of Economics (Graduate, English), 2026, 2027</span></li>
-    <li><span class="course">Nonparametric Methods and Distributional Analysis</span> <span class="det">· for Prof. <a href="https://sites.google.com/view/hannawang/" target="_blank" rel="noopener">Hanna Wang</a>, Barcelona School of Economics (Graduate, English), 2026, 2027</span></li>
-    <li><span class="course">Data Analysis</span> <span class="det">· for Prof. <a href="https://sites.google.com/site/econrauh/home" target="_blank" rel="noopener">Christopher Rauh</a>, Universitat Autònoma de Barcelona (Graduate, English), 2026</span></li>
-    <li><span class="course">Text Analysis</span> <span class="det">· for Prof. <a href="https://www.miriam-artiles.com/" target="_blank" rel="noopener">Miriam Artiles</a>, Universitat Autònoma de Barcelona (Graduate, English), 2026</span></li>
-    <li><span class="course">Data Science and AI</span> <span class="det">· for Prof. <a href="https://sites.google.com/site/econrauh/home" target="_blank" rel="noopener">Christopher Rauh</a>, Universitat Autònoma de Barcelona (Graduate, English), 2025</span></li>
-    <li><span class="course">Econometrics III</span> <span class="det">· for Prof. Carlos Walter Robledo, Universidad Nacional de Córdoba (Undergraduate, Spanish), 2021</span></li>
-    <li><span class="course">Microeconomics III</span> <span class="det">· for Prof. María Cecilia Avramovich, Universidad Nacional de Córdoba (Undergraduate, Spanish), 2021</span></li>
-    <li><span class="course">International Economics</span> <span class="det">· for Prof. María Cecilia Gáname, Universidad Nacional de Córdoba (Undergraduate, Spanish), 2021</span></li>
-    <li><span class="course">Monetary Economics</span> <span class="det">· for Prof. Ángel Enrique Neder, Universidad Nacional de Córdoba (Undergraduate, Spanish), 2020–2021</span></li>
-    <li><span class="course">Macroeconomics I</span> <span class="det">· for Prof. Ángel Enrique Neder, Universidad Nacional de Córdoba (Undergraduate, Spanish), 2018–2021</span></li>
-    <li><span class="course">Econometrics I</span> <span class="det">· for Prof. Adrián Moneta Pizarro, Universidad Nacional de Córdoba (Undergraduate, Spanish), 2019–2020</span></li>
-    <li><span class="course">Statistics III</span> <span class="det">· for Prof. Marcelo Florensa, Universidad Nacional de Córdoba (Undergraduate, Spanish), 2019</span></li>
-  </ul>
-
-  <h3 class="sub">In the classroom</h3>
-  <!-- PHOTOS: upload the images to the repo. Click any photo on the site to enlarge it; use the arrows to browse. -->
-  <div class="gallery" id="gallery">
-    <img src="teaching_1.jpg" alt="Teaching moment">
-    <img src="teaching_3.jpg" alt="Teaching moment">
-    <img src="teaching_2.jpg" alt="Teaching moment">
-    <img src="teaching_4.jpg" alt="Teaching moment">
-    <img src="teaching_8.JPG" alt="Teaching moment">
-    <img src="teaching_5.jpg" alt="Teaching moment">
-  </div>
-</section>
-
-<!-- LIGHTBOX: one overlay, driven by the gallery above -->
-<div class="lightbox" id="lightbox">
-  <button class="lb-btn lb-close" id="lbClose" aria-label="Close">×</button>
-  <button class="lb-btn lb-prev" id="lbPrev" aria-label="Previous">‹</button>
-  <img id="lbImg" src="" alt="Teaching moment enlarged">
-  <button class="lb-btn lb-next" id="lbNext" aria-label="Next">›</button>
-</div>
-
-<!-- SERVICE -->
-<section id="service">
-  <div class="eyebrow">Service &amp; Community</div>
-  <h2 class="section-title">Building community in economics</h2>
-  <p class="section-lead">I believe one of our greatest advantages comes from connecting with others. That is why I build spaces where people can meet, exchange ideas, and learn from one another.</p>
-
-  <div class="svc-cards">
-    <div class="svc-card">
-      <h4>CORE: Córdoba Economics Annual Meeting <span class="yr">· Co-organizer, 2026</span></h4>
-      <p>An annual meeting that brings the economics community of my alma mater together. <a href="https://sites.google.com/site/coreannualmeeting/" target="_blank" rel="noopener">Site ↗</a></p>
-    </div>
-    <div class="svc-card">
-      <h4>Barcelona Applied PhD Seminar <span class="yr">· Co-organizer, 2026–present</span></h4>
-      <p>A peer space where applied PhD students present and grow their work together.</p>
-    </div>
-    <div class="svc-card">
-      <h4>CONECTAR Network <span class="yr">· Co-organizer, 2025–present</span></h4>
-      <p>Workshops and a growing network that keep the economics community of my alma mater connected, linking current students with graduates across the profession.</p>
-    </div>
-    <div class="svc-card">
-      <h4>Community gatherings <span class="yr">· Organizer, 2023–present</span></h4>
-      <p>Creating small gatherings that bring people together and help a community feel closer, from a cultural lunch to a connect-coffee across cohorts.</p>
-    </div>
-  </div>
-
-  <p class="svc-more"><span class="lbl">Also:</span> conference volunteering and academic service roles. Full record in my <a href="#cv">CV</a>.</p>
-
-  <!-- PHOTO: upload service_1.jpg to the repo. Swap the filename to change it. -->
-  <img class="svc-photo" src="service_1.jpg" alt="Luciana convening a community gathering">
-  <p class="svc-photo-cap">Opening CONECTAR, a gathering for students and alumni.</p>
-</section>
-
-<!-- CV -->
-<section id="cv">
-  <div class="eyebrow">CV</div>
-  <h2 class="section-title">Curriculum Vitae</h2>
-  <p class="section-lead">The full record: education, research, teaching, awards, and service.</p>
-  <!-- CV LINK: replace href="#" with your Google Drive share link (set to "Anyone with the link"). -->
-  <a class="btn btn-primary" href="#" target="_blank" rel="noopener">View CV</a>
-</section>
-
-<footer>
-  <span>© 2026 Luciana Manuali</span>
-  <span>luciana.manuali@iae.csic.es · <a href="https://www.linkedin.com/in/luciana-manuali/" target="_blank" rel="noopener">LinkedIn</a></span>
-</footer>
-
-<script>
-  document.querySelectorAll('#nl a').forEach(a=>a.addEventListener('click',()=>document.getElementById('nl').classList.remove('open')));
-
-  // ---- Photo lightbox with arrows ----
-  (function(){
-    var imgs = Array.prototype.slice.call(document.querySelectorAll('#gallery img'));
-    var box = document.getElementById('lightbox');
-    var big = document.getElementById('lbImg');
-    var i = 0;
-    function show(n){ i = (n + imgs.length) % imgs.length; big.src = imgs[i].src; }
+    function show(n){ i = (n + imgs.length) % imgs.length; big.src = imgs[i].src; cap.textContent = imgs[i].getAttribute('data-cap') || ''; }
     function open(n){ show(n); box.classList.add('open'); }
     function close(){ box.classList.remove('open'); }
     imgs.forEach(function(im, n){ im.addEventListener('click', function(){ open(n); }); });
