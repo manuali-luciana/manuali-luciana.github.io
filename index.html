@@ -363,13 +363,13 @@
   // ---- Photo lightbox with arrows ----
   (function(){
     var imgs = Array.prototype.slice.call(document.querySelectorAll('#gallery img'));
-    window.openLb = function(el){ big.src = el.src; if(cap) cap.textContent = el.getAttribute('data-cap') || ''; box.classList.add('open'); };
+    window.openLb = function(el){ big.src = el.src; if(cap) cap.textContent = el.getAttribute('data-cap') || ''; document.getElementById('lbPrev').style.display='none'; document.getElementById('lbNext').style.display='none'; box.classList.add('open'); };
     var box = document.getElementById('lightbox');
     var big = document.getElementById('lbImg');
     var cap = document.getElementById('lbCap');
     var i = 0;
     function show(n){ i = (n + imgs.length) % imgs.length; big.src = imgs[i].src; cap.textContent = imgs[i].getAttribute('data-cap') || ''; }
-    function open(n){ show(n); box.classList.add('open'); }
+    function open(n){ document.getElementById('lbPrev').style.display=''; document.getElementById('lbNext').style.display=''; show(n); box.classList.add('open'); }
     function close(){ box.classList.remove('open'); }
     imgs.forEach(function(im, n){ im.addEventListener('click', function(){ open(n); }); });
     document.getElementById('lbClose').addEventListener('click', close);
